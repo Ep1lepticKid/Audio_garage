@@ -1,0 +1,348 @@
+.container {
+  padding: 30px;
+  background: #2b2a24;
+  min-height: 100vh;
+  color: #d4c9a6;
+  font-family: 'Courier New', monospace;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #00ff88;
+}
+
+.title {
+  font-size: 28px;
+  color: #d4c9a6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title span {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.addButton {
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.addButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 250px;
+  padding: 10px 15px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.searchInput:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  outline: none;
+}
+
+.categoryFilter {
+  padding: 10px 15px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.categoryFilter:focus {
+  border-color: #00ff88;
+  outline: none;
+}
+
+.tableContainer {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.table th {
+  background: #2b2a24;
+  color: #00ff88;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #7a914b;
+  position: relative;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+  padding-right: 30px !important;
+}
+
+.sortable:hover {
+  background: #1a1a15;
+  color: #00ff88;
+}
+
+.sortIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.sortable:hover .sortIcon {
+  opacity: 1;
+  color: #00ff88;
+}
+
+.table td {
+  padding: 15px;
+  color: #b8ae8e;
+  border-bottom: 1px solid #7a914b;
+  vertical-align: middle;
+}
+
+.table tr:hover td {
+  background: #2b2a24;
+  color: #d4c9a6;
+}
+
+.productImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 2px solid #7a914b;
+  background: #2b2a24;
+}
+
+.noImage {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #7a914b;
+  background: #2b2a24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a5e4a;
+  font-size: 12px;
+}
+
+.categoryBadge {
+  background: #2b2a24;
+  color: #b8ae8e;
+  padding: 4px 8px;
+  border: 1px solid #7a914b;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.price {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.oldPrice {
+  color: #ff8888;
+  text-decoration: line-through;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.stockBadge {
+  padding: 4px 8px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.inStock {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+.outOfStock {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  color: #ff8888;
+}
+
+.preOrder {
+  background: rgba(255, 255, 0, 0.2);
+  border: 1px solid #ffff00;
+  color: #ffff00;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton, .deleteButton {
+  padding: 6px 12px;
+  border: 1px solid;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: transparent;
+}
+
+.editButton {
+  border-color: #7a914b;
+  color: #b8ae8e;
+}
+
+.editButton:hover {
+  background: #7a914b;
+  color: #2b2a24;
+}
+
+.deleteButton {
+  border-color: #ff4444;
+  color: #ff8888;
+}
+
+.deleteButton:hover {
+  background: #ff4444;
+  color: #2b2a24;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-size: 18px;
+}
+
+.error {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  color: #ff8888;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-style: italic;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pageButton {
+  background: transparent;
+  border: 2px solid #7a914b;
+  color: #b8ae8e;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: #7a914b;
+  color: #2b2a24;
+}
+
+.pageButton.active {
+  background: #00ff88;
+  border-color: #00ff88;
+  color: #2b2a24;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Добавьте в конец файла */
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 35px 10px 15px; /* Добавляем отступ справа для кнопки */
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  outline: none;
+}
+
+.clearSearch {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #b8ae8e;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: all 0.3s;
+}
+
+.clearSearch:hover {
+  color: #00ff88;
+}

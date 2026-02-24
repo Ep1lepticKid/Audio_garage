@@ -1,0 +1,76 @@
+.container {
+  padding: 100px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #2b2a24;
+}
+
+.title {
+  color: #00ff88;
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-family: 'Courier Prime', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #7a914b;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 30px;
+}
+
+.info {
+  padding: 20px;
+  background: #2b2a24;
+}
+
+.subtitle {
+  color: #d4c9a6;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.info p {
+  color: #b8ae8e;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 20px;
+  min-width: 30px;
+  color: #7a914b;
+}
+
+.mapContainer {
+  width: 100%;
+  background: #2b2a24;
+  padding: 10px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}

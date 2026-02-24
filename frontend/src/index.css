@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #2b2a24;
+  color: #cdc9b9;
+  line-height: 1.6;
+}
+
+/* Ретро-неоновые акценты */
+:root {
+  --color-bg: #2b2a24;
+  --color-bg-light: #3f3d35;
+  --color-text: #cdc9b9;
+  --color-text-light: #b8ae8e;
+  --color-accent-retro: #7a914b;
+  --color-neon: #00ff88;
+  --color-neon-glow: 0 0 10px #00ff88, 0 0 20px #00cc66;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Плавные переходы */
+a, button {
+  transition: all 0.3s ease;
+}

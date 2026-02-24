@@ -1,0 +1,268 @@
+.homePage {
+  overflow-x: hidden;
+}
+
+/* Параллакс секция */
+.parallax {
+  height: 100vh;
+  min-height: 600px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallaxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(43, 42, 36, 0.9) 100%
+  );
+}
+
+.parallaxContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #d4c9a6;
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeInUp 1.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainTitle {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.mainTitle span {
+  color: #00ff88;
+  text-shadow: 0 0 20px #00ff88, 0 0 40px #00cc66;
+  display: block;
+  font-size: 64px;
+}
+
+.mainSubtitle {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #b8ae8e;
+  letter-spacing: 2px;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 18px 48px;
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  font-size: 18px;
+}
+
+.ctaButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 40px #00ff88;
+  transform: scale(1.05);
+}
+
+/* Общие стили секций */
+.section {
+  padding: 80px 0;
+  background: #2b2a24;
+}
+
+.section:nth-child(even) {
+  background: #3f3d35;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  color: #d4c9a6;
+  margin-bottom: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier Prime', monospace;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.sectionTitle span {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+/* Сетка товаров */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.productCard {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 20px;
+  transition: all 0.3s ease;
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.productCard:hover {
+  border-color: #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  transform: translateY(-5px);
+}
+
+.productImage {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+  background: #2b2a24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.productImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  visibility: visible;
+}
+
+.noImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a5e4a;
+  font-size: 48px;
+}
+
+.productName {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #d4c9a6;
+}
+
+.productPrice {
+  font-size: 20px;
+  font-weight: 600;
+  color: #00ff88;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+.productLink {
+  display: inline-block;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid #7a914b;
+  color: #b8ae8e;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.productLink:hover {
+  background: #7a914b;
+  color: #2b2a24;
+  border-color: #00ff88;
+}
+
+/* Секция преимуществ */
+.features {
+  background: linear-gradient(135deg, #2b2a24 0%, #1a1a15 100%);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.featureCard {
+  text-align: center;
+  padding: 30px;
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  transition: all 0.3s;
+}
+
+.featureCard:hover {
+  border-color: #00ff88;
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.featureIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.featureCard h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #d4c9a6;
+}
+
+.featureCard p {
+  color: #b8ae8e;
+  line-height: 1.6;
+}
