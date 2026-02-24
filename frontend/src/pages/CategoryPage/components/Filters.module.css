@@ -1,0 +1,125 @@
+.filters {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 20px;
+}
+
+.filtersTitle {
+  color: #00ff88;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.filterGroup {
+  margin-bottom: 20px;
+}
+
+.filterLabel {
+  display: block;
+  color: #b8ae8e;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.priceInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.priceInputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.priceInput {
+  flex: 1;
+  padding: 10px 12px;  /* ← чуть увеличил padding */
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.priceInput:focus {
+  border-color: #00ff88;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+
+.priceSeparator {
+  color: #7a914b;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.errorMessage {
+  display: block;
+  color: #ff8888;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b8ae8e;
+  cursor: pointer;
+}
+
+.checkboxLabel input {
+  width: auto;
+  cursor: pointer;
+}
+
+.filterActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.applyBtn, .resetBtn {
+  flex: 1;
+  min-width: 100px;
+  padding: 12px 10px;
+  border: 2px solid;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.applyBtn {
+  background: #7a914b;
+  border-color: #00ff88;
+  color: #2b2a24;
+}
+
+.applyBtn:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+}
+
+.resetBtn {
+  background: transparent;
+  border-color: #7a914b;
+  color: #b8ae8e;
+}
+
+.resetBtn:hover {
+  background: #7a914b;
+  color: #2b2a24;
+}
+

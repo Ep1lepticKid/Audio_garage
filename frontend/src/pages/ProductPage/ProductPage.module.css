@@ -1,0 +1,123 @@
+.productPage {
+  background: #2b2a24;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #b8ae8e;
+}
+
+.breadcrumbLink {
+  color: #b8ae8e;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumbLink:hover {
+  color: #00ff88;
+}
+
+.breadcrumbSeparator {
+  margin: 0 10px;
+  color: #7a914b;
+}
+
+.breadcrumbCurrent {
+  color: #d4c9a6;
+}
+
+/* Основной контент */
+.productContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+/* Галерея */
+.gallerySection {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 20px;
+}
+
+/* Информация */
+.infoSection {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 30px;
+}
+
+/* Детали */
+.detailsSection {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 30px;
+}
+
+/* Загрузка и ошибки */
+.loadingContainer,
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #2b2a24;
+  padding-top: 80px;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #7a914b;
+  border-top: 3px solid #00ff88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorTitle {
+  color: #ff4444;
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.errorMessage {
+  color: #b8ae8e;
+  margin-bottom: 20px;
+}
+
+.backLink {
+  color: #00ff88;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .productContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

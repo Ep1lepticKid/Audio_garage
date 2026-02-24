@@ -1,0 +1,244 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: #3f3d35;
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 2px solid #7a914b;
+}
+
+.modalHeader h2 {
+  color: #d4c9a6;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #b8ae8e;
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+.closeButton:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.form {
+  padding: 25px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  color: #b8ae8e;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  outline: none;
+}
+
+.formGroup input.error,
+.formGroup textarea.error {
+  border-color: #ff4444;
+}
+
+.errorMessage {
+  display: block;
+  color: #ff8888;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.helpText {
+  display: block;
+  color: #6a5e4a;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+}
+
+.checkboxGroup {
+  margin: 20px 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b8ae8e;
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: auto;
+  cursor: pointer;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #7a914b;
+}
+
+.cancelButton {
+  background: transparent;
+  border: 2px solid #7a914b;
+  color: #b8ae8e;
+  padding: 12px 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.cancelButton:hover {
+  background: #7a914b;
+  color: #2b2a24;
+}
+
+.saveButton {
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  padding: 12px 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.saveButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+/* Добавьте в конец файла */
+
+.serverError {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  border-left: 4px solid #ff4444;
+  color: #ff8888;
+  padding: 15px 20px;
+  margin: 0 25px 20px 25px;
+  font-size: 14px;
+}
+
+.serverError strong {
+  color: #ff4444;
+  margin-right: 5px;
+}
+
+.slugInputGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.slugInput {
+  flex: 1;
+  padding: 12px 15px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.slugInput:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  outline: none;
+}
+
+.slugInput.error {
+  border-color: #ff4444;
+}
+
+.generateButton {
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.generateButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 20px #00ff88;
+}

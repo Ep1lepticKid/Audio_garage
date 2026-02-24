@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио Гараж - Ретро-Неон микс</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', 'Segoe UI', monospace;
+        }
+        body {
+            background-color: #2b2a24; 
+            color: #cdc9b9; 
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #3f3d35; 
+            border-bottom: 3px solid #00ff88; 
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); 
+        }
+        
+        
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #d4c9a6; 
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: #00ff88; /* НЕОН */
+            background-color: #2b2a24;
+            padding: 0 5px;
+            text-shadow: 0 0 10px #00ff88; 
+            margin-left: 3px;
+        }
+        
+        
+        .nav {
+            display: flex;
+            gap: 25px;
+        }
+        .nav a {
+            color: #b8ae8e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav a:hover {
+            color: #00ff88; 
+            text-shadow: 0 0 8px #00ff88; 
+            text-decoration: underline wavy #7a914b; 
+        
+        
+        .user-actions button {
+            background: #3f3d35; 
+            border: 2px solid #00ff88; 
+            color: #00ff88; 
+            padding: 8px 25px;
+            border-radius: 0px; 
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); 
+            transition: 0.3s;
+        }
+        .user-actions button:hover {
+            background: #00ff88; 
+            color: #2b2a24; 
+            box-shadow: 0 0 20px #00ff88; 
+        }
+
+        
+            color: #00ff88; 
+            text-shadow: 0 0 5px #00ff88;
+        }
+
+        
+        .content {
+            padding: 40px;
+        }
+        
+       
+        .section-title {
+            color: #d4c9a6;
+            font-size: 32px;
+            text-transform: uppercase;
+            background: #3f3d35;
+            display: inline-block;
+            padding: 10px 20px;
+            border-left: 8px solid #00ff88; /* НЕОН */
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        
+        .color-palette {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .color-card {
+            width: 200px;
+            height: 200px;
+            border-radius: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: #efefef;
+            font-weight: bold;
+            border: 2px solid #6a5e4a;
+            position: relative;
+        }
+        
+        .color-card.accent-bg {
+            box-shadow: 0 0 20px #00ff88, 0 0 5px #00ff88 inset;
+            border-color: #00ff88;
+        }
+        
+      
+        .primary-bg { background-color: #7a914b; color: #1e1d18; } /* Ретро-зеленый */
+        .dark-bg { background-color: #2b2a24; } /* Основной фон */
+        .accent-bg { background-color: #00ff88; color: #2b2a24; } /* НЕОН */
+        .header-bg { background-color: #3f3d35; } /* Шапка */
+        .retro-green-bg { background-color: #7a914b; } /* Для карточки */
+
+        
+        .btn {
+            padding: 12px 30px;
+            margin-right: 20px;
+            border: 3px solid;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-primary {
+            background: #7a914b; 
+            border-color: #00ff88; 
+            color: #2b2a24;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+        .btn-primary:hover {
+            background: #00ff88; 
+            border-color: #7a914b;
+            box-shadow: 0 0 25px #00ff88;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border-color: #7a914b; 
+            color: #cdc9b9;
+        }
+        .btn-outline:hover {
+            border-color: #00ff88;
+            color: #00ff88;
+            text-shadow: 0 0 8px #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        
+        .text-sample {
+            font-size: 18px;
+            color: #bcb595;
+            line-height: 1.6;
+        }
+        .text-sample .neon {
+            color: #00ff88;
+            background: #3f3d35;
+            padding: 2px 5px;
+            text-shadow: 0 0 8px #00ff88;
+            font-weight: bold;
+        }
+        .text-sample .retro {
+            color: #7a914b;
+            background: #2b2a24;
+            padding: 2px 5px;
+            border: 1px solid #6a5e4a;
+        }
+
+        
+        .garage-sign {
+            margin-top: 40px;
+            padding: 20px;
+            background: #3f3d35;
+            border: 3px solid #7a914b;
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .garage-sign span {
+            color: #00ff88;
+            text-shadow: 0 0 15px #00ff88;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .garage-sign::before {
+            content: "⚡";
+            color: #00ff88;
+            font-size: 30px;
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        .garage-sign::after {
+            content: "⚡";
+            color: #00ff88;
+            font-size: 30px;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            text-shadow: 0 0 10px #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        
+        <div class="logo">АУДИО<span>ГАРАЖ</span></div>
+        
+        
+        <nav class="nav">
+            <a href="#">Каталог</a>
+            <a href="#">Контакты</a>
+            <a href="#">Статьи</a>
+            <a href="#">Обратная связь</a>
+            <a href="#">Корзина</a> 
+        </nav>
+        
+        
+        <div class="user-actions">
+            <button>Вход</button>
+        </div>
+    </header>
+
+    <main class="content">
+       
+        <h1 class="section-title">Ретро-неон микс</h1>
+        
+       
+        <p class="text-sample">
+            <span class="retro">Основа: ретро-гараж</span> — приглушенные тона, хаки (#7a914b), 
+            текстурный фон (#2b2a24). <span class="neon">Акценты: неоновый зеленый #00ff88</span> — 
+            горит в темноте, как вывеска над старым гаражом.
+        </p>
+
+        
+        <div class="color-palette">
+            <div class="color-card header-bg"><span>#3f3d35<br>(ретро-шапка)</span></div>
+            <div class="color-card dark-bg"><span>#2b2a24<br>(фон)</span></div>
+            <div class="color-card" style="background-color: #7a914b; color: #1e1d18;"><span>#7a914b<br>(ретро-зеленый)</span></div>
+            <div class="color-card accent-bg"><span>#00ff88 НЕОН<br>(свечение!)</span></div>
+        </div>
+
+        
+        <div style="margin: 40px 0;">
+            <button class="btn btn-primary">Купить с неоном</button>
+            <button class="btn btn-outline">Ретро-подробнее</button>
+        </div>
+
+        
+        <div class="garage-sign">
+            <span>АУДИО ГАРАЖ</span> <br>
+            EST. 2026
+        </div>
+
+        
+        <div style="margin-top: 50px; background: #3f3d35; padding: 25px; border: 2px solid #7a914b; display: flex; gap: 30px; align-items: center;">
+            <div style="width: 100px; height: 100px; background: #2b2a24; border: 3px solid #00ff88; box-shadow: 0 0 20px rgba(0,255,136,0.3); display: flex; align-items: center; justify-content: center; font-size: 40px;">🎸</div>
+            <div>
+                <h3 style="color: #d4c9a6; font-size: 24px;">Винтажный усилитель <span style="color: #00ff88; text-shadow: 0 0 8px #00ff88;">NEON</span></h3>
+                <p style="color: #bcb595;">Старый корпус, современная начинка. Светится в темноте.</p>
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <span style="color: #00ff88; font-weight: bold;">25 990 ₽</span>
+                    <span style="color: #7a914b; text-decoration: line-through;">32 990 ₽</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

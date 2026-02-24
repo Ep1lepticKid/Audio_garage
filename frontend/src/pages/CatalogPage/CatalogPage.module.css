@@ -1,0 +1,295 @@
+/* Основные стили */
+.catalogPage {
+  background: #2b2a24;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero секция */
+.hero {
+  padding: 140px 0 80px;
+  background: linear-gradient(135deg, #1a1a15 0%, #2b2a24 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%2300ff88" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2300ff88" stroke-width="2"/></svg>');
+  background-size: 50px;
+  opacity: 0.1;
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 700;
+  color: #d4c9a6;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-family: 'Courier Prime', monospace;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+.heroTitle span {
+  color: #00ff88;
+  text-shadow: 0 0 20px #00ff88, 0 0 40px #00cc66;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  color: #b8ae8e;
+  max-width: 600px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Секция категорий */
+.categoriesSection {
+  padding: 80px 0;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* Карточка категории */
+.categoryCard {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  transition: all 0.3s;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.categoryLink {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.categoryImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #2b2a24;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.categoryCard:hover .categoryImage {
+  transform: scale(1.1);
+}
+
+.categoryPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderText {
+  font-size: 80px;
+  font-weight: bold;
+  color: #d4c9a6;
+  text-transform: uppercase;
+  font-family: 'Courier Prime', monospace;
+  opacity: 0.7;
+}
+
+.categoryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+.productCount {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #00ff88;
+  color: #2b2a24;
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.categoryInfo {
+  padding: 25px;
+  position: relative;
+}
+
+.categoryName {
+  font-size: 24px;
+  color: #d4c9a6;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier Prime', monospace;
+  transition: color 0.3s;
+}
+
+.categoryCard:hover .categoryName {
+  color: #00ff88;
+}
+
+.categoryDescription {
+  color: #b8ae8e;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.categoryArrow {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 24px;
+  color: #7a914b;
+  transition: all 0.3s;
+}
+
+.categoryCard:hover .categoryArrow {
+  color: #00ff88;
+  transform: translateX(5px);
+}
+
+/* Призыв к действию */
+.ctaSection {
+  padding: 80px 0;
+  background: #1a1a15;
+  border-top: 2px solid #7a914b;
+  border-bottom: 2px solid #7a914b;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 36px;
+  color: #d4c9a6;
+  margin-bottom: 20px;
+  font-family: 'Courier Prime', monospace;
+  text-transform: uppercase;
+}
+
+.ctaText {
+  color: #b8ae8e;
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 15px 40px;
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.ctaButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 40px #00ff88;
+  transform: scale(1.05);
+}
+
+/* Загрузка */
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #2b2a24;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #7a914b;
+  border-top: 3px solid #00ff88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+  
+  .heroTitle {
+    font-size: 36px;
+  }
+  
+  .heroSubtitle {
+    font-size: 16px;
+  }
+  
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .categoryImageWrapper {
+    height: 200px;
+  }
+  
+  .ctaTitle {
+    font-size: 28px;
+  }
+  
+  .ctaText {
+    font-size: 16px;
+  }
+}
