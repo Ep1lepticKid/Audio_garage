@@ -20,9 +20,7 @@ const ArticlesPage = () => {
   const loadArticles = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `http://localhost:5000/api/articles/published?page=${pagination.page}&limit=${pagination.limit}`
-      );
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/articles/published?page=...`);
       const data = await response.json();
       
       setArticles(data.articles || []);

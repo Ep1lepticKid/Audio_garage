@@ -6,7 +6,7 @@ import styles from './HomePage.module.css';
 import garageImage from '../../assets/images/garage.jpg';
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]); // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const HomePage = () => {
                     <div className={styles.productImage}>
                       {product.images && product.images.length > 0 ? (
                         <img 
-                          src={`http://localhost:5000${
+                          src={`${process.env.REACT_APP_IMAGE_URL}${
                             product.images.find(img => img.is_main)?.url || product.images[0]?.url
                           }`}
                           alt={product.name}

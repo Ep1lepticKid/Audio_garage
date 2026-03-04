@@ -14,7 +14,7 @@ const OrderSuccessPage = () => {
 
   const loadOrder = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/orders/number/${orderNumber}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/orders/number/${orderNumber}`);
       const data = await response.json();
       setOrder(data);
     } catch (error) {

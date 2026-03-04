@@ -44,7 +44,7 @@ const CartPage = () => {
                 <div className={styles.itemImage}>
                   {item.image ? (
                     <img 
-                      src={`http://localhost:5000${item.image}`}
+                      src={`${process.env.REACT_APP_IMAGE_URL}${item.image}`}
                       alt={item.name}
                       onError={(e) => {
                         e.target.onerror = null;

@@ -24,7 +24,7 @@ const ImageGallery = ({ images, productName }) => {
         <AnimatePresence mode="wait">
           <motion.img
             key={selectedImage}
-            src={`http://localhost:5000${images[selectedImage].url}`}
+            src={`${process.env.REACT_APP_IMAGE_URL}${images[selectedImage].url}`}
             alt={productName}
             className={styles.mainImg}
             initial={{ opacity: 0 }}
@@ -50,7 +50,7 @@ const ImageGallery = ({ images, productName }) => {
               onClick={() => setSelectedImage(index)}
             >
               <img 
-                src={`http://localhost:5000${img.url}`}
+                src={`${process.env.REACT_APP_IMAGE_URL}${img.url}`}
                 alt={`${productName} - вид ${index + 1}`}
                 className={styles.thumbnailImg}
                 onError={(e) => {
