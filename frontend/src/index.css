@@ -1,4 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
+:root {
+  --color-bg: #2b2a24;
+  --color-bg-light: #3f3d35;
+  --color-text: #cdc9b9;
+  --color-text-light: #b8ae8e;
+  --color-accent-retro: #7a914b;
+  --color-neon: #00ff88;
+  --color-neon-glow: 0 0 10px #00ff88, 0 0 20px #00cc66;
+  
+  /* Новые переменные для закруглений */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 30px;
+  --border-radius-full: 999px;
+  
+  /* Тени */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-neon: 0 0 20px rgba(0, 255, 136, 0.3);
+}
 
 * {
   margin: 0;
@@ -8,20 +29,60 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #2b2a24;
-  color: #cdc9b9;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
 }
 
-/* Ретро-неоновые акценты */
-:root {
-  --color-bg: #2b2a24;
-  --color-bg-light: #3f3d35;
-  --color-text: #cdc9b9;
-  --color-text-light: #b8ae8e;
-  --color-accent-retro: #7a914b;
-  --color-neon: #00ff88;
-  --color-neon-glow: 0 0 10px #00ff88, 0 0 20px #00cc66;
+/* Глобальные классы для переиспользования */
+.card {
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-accent-retro);
+  border-radius: var(--border-radius-md);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--color-neon);
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-4px);
+}
+
+.btn {
+  padding: 10px 24px;
+  border: 2px solid var(--color-accent-retro);
+  border-radius: var(--border-radius-full);
+  background: transparent;
+  color: var(--color-text-light);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--color-accent-retro);
+  border-color: var(--color-neon);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background: var(--color-neon);
+  border-color: var(--color-accent-retro);
+  box-shadow: var(--shadow-neon);
+}
+
+.btn-secondary {
+  border-color: var(--color-accent-retro);
+  color: var(--color-text-light);
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent-retro);
+  color: var(--color-bg);
 }
 
 .container {
@@ -30,7 +91,15 @@ body {
   padding: 0 20px;
 }
 
-/* Плавные переходы */
-a, button {
-  transition: all 0.3s ease;
+.section-title {
+  font-size: 36px;
+  color: var(--color-text);
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+}
+
+.section-title span {
+  color: var(--color-neon);
+  text-shadow: 0 0 10px var(--color-neon);
 }

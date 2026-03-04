@@ -1,0 +1,190 @@
+.container {
+  padding: 30px;
+  background: #2b2a24;
+  min-height: 100vh;
+  color: #d4c9a6;
+  font-family: 'Courier New', monospace;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #00ff88;
+}
+
+.title {
+  font-size: 28px;
+  color: #d4c9a6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title span {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filterSelect {
+  padding: 10px 15px;
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  color: #b8ae8e;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.filterSelect:focus {
+  border-color: #00ff88;
+  outline: none;
+}
+
+.tableContainer {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.table th {
+  background: #2b2a24;
+  color: #00ff88;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #7a914b;
+}
+
+.table td {
+  padding: 15px;
+  color: #b8ae8e;
+  border-bottom: 1px solid #7a914b;
+}
+
+.table tr:hover td {
+  background: #2b2a24;
+  color: #d4c9a6;
+}
+
+.orderNumber {
+  color: #d4c9a6;
+  font-weight: 600;
+}
+
+.total {
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.paymentStatus {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.paid {
+  background: #00ff88;
+  color: #2b2a24;
+}
+
+.pending {
+  background: #ffa500;
+  color: #2b2a24;
+}
+
+.viewButton {
+  background: transparent;
+  border: 2px solid #7a914b;
+  color: #b8ae8e;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 13px;
+}
+
+.viewButton:hover {
+  background: #7a914b;
+  color: #2b2a24;
+  border-color: #00ff88;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pageBtn {
+  min-width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #7a914b;
+  color: #b8ae8e;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: #7a914b;
+  color: #2b2a24;
+  border-color: #00ff88;
+}
+
+.pageBtn.active {
+  background: #00ff88;
+  border-color: #00ff88;
+  color: #2b2a24;
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-size: 18px;
+}
+
+.error {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  color: #ff8888;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-style: italic;
+}

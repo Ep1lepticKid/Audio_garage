@@ -1,0 +1,231 @@
+.checkoutPage {
+  background: #2b2a24;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageTitle {
+  font-size: 36px;
+  color: #d4c9a6;
+  margin-bottom: 40px;
+  font-family: 'Courier Prime', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.checkoutContent {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+}
+
+/* Форма */
+.checkoutForm {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 30px;
+}
+
+.sectionTitle {
+  color: #00ff88;
+  font-size: 20px;
+  margin: 30px 0 20px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.sectionTitle:first-of-type {
+  margin-top: 0;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  color: #b8ae8e;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  color: #d4c9a6;
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  outline: none;
+}
+
+.formGroup input.error,
+.formGroup textarea.error {
+  border-color: #ff4444;
+}
+
+.errorMessage {
+  display: block;
+  color: #ff8888;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Сводка заказа */
+.orderSummary {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  padding: 30px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.cartItems {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.cartItem {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #7a914b;
+}
+
+.cartItem:last-child {
+  border-bottom: none;
+}
+
+.itemImage {
+  width: 60px;
+  height: 60px;
+  background: #2b2a24;
+  border: 2px solid #7a914b;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a5e4a;
+  font-size: 20px;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  color: #d4c9a6;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.itemPrice {
+  color: #b8ae8e;
+  font-size: 13px;
+}
+
+.itemTotal {
+  color: #00ff88;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.summaryTotals {
+  border-top: 2px solid #7a914b;
+  padding-top: 20px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #b8ae8e;
+  font-size: 16px;
+}
+
+.summaryRow.total {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #7a914b;
+  color: #00ff88;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px;
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 20px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .checkoutContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .orderSummary {
+    position: static;
+  }
+  
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

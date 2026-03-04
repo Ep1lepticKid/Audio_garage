@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
   const { 
@@ -11,6 +12,8 @@ const CartPage = () => {
     clearCart, 
     cartTotal 
   } = useCart();
+
+  const navigate = useNavigate();
 
   if (cartItems.length === 0) {
     return (
@@ -119,7 +122,10 @@ const CartPage = () => {
             </div>
             
             <div className={styles.cartActions}>
-              <button className={styles.checkoutBtn}>
+              <button 
+                className={styles.checkoutBtn}
+                onClick={() => navigate('/checkout')}
+              >
                 Оформить заказ
               </button>
               
