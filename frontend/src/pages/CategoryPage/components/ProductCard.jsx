@@ -40,7 +40,7 @@ const ProductCard = ({ product, index }) => {
         <div className={styles.productImage}>
           {mainImage ? (
             <img 
-              src={`http://localhost:5000${mainImage}`}
+              src={`${process.env.REACT_APP_IMAGE_URL}${mainImage}`}
               alt={product.name}
               className={styles.image}
               loading="lazy"

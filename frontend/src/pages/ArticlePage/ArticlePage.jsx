@@ -15,7 +15,7 @@ const ArticlePage = () => {
   const loadArticle = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/articles/${slug}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/articles/${slug}`);
       
       if (!response.ok) {
         throw new Error('Статья не найдена');

@@ -1,0 +1,17 @@
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 20.2.0
+build:
+  skip: false
+  additionalCommands: npm run build
+  artifacts:
+    "build": /app
+run:
+  scriptName: serve
+  scriptArguments: -s build
+  nodeArguments: null
+  command: null
+  persistenceMount: /data
+  containerPort: 3000

@@ -1,0 +1,10 @@
+meta:
+  environment: node
+  language: node
+  version: 18
+build:
+  command: npm install
+run:
+  command: node server.js
+  ports:
+    - port: 5000
