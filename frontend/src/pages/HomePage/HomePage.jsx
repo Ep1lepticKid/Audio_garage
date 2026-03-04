@@ -1,59 +1,22 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Добавляем импорт
+import { motion } from 'framer-motion';
 import { productsApi } from '../../admin/services/products';
 import styles from './HomePage.module.css';
 import garageImage from '../../assets/images/garage.jpg';
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-  const observer = useRef();
-  const limit = 8;
+  const [products, setProducts] = useState([]); // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО
+  const [loading, setLoading] = useState(true);
 
-  // Анимации для товаров
-  const containerVariants = {
-    hidden: { opacity: 1 },  
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },  
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { type: "spring", stiffness: 100 }
-    }
-  };
-
-  const loadProducts = async (pageNum) => {
+  const loadProducts = async () => {
     try {
-      setLoading(true);
-      const params = new URLSearchParams({
-        page: pageNum,
-        limit,
-        sort: 'created_at',
-        order: 'DESC'
-      });
-      
-      const data = await productsApi.getAll(`?${params.toString()}`);
-      
-      if (data.products.length < limit) {
-        setHasMore(false);
-      }
-      
-      if (pageNum === 1) {
-        setProducts(data.products);
-      } else {
-        setProducts(prev => [...prev, ...data.products]);
-      }
+      const data = await productsApi.getAll('?limit=4&sort=created_at&order=DESC');
+      setProducts(data.products || []);
     } catch (error) {
       console.error('Ошибка загрузки товаров:', error);
     } finally {
@@ -61,106 +24,48 @@ const HomePage = () => {
     }
   };
 
-  useEffect(() => {
-    loadProducts(1);
-  }, []);
-
-  const lastProductRef = useCallback(node => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
-        setPage(prevPage => {
-          const nextPage = prevPage + 1;
-          loadProducts(nextPage);
-          return nextPage;
-        });
-      }
-    });
-    
-    if (node) observer.current.observe(node);
-  }, [loading, hasMore]);
-
   return (
     <div className={styles.homePage}>
-      {/* Параллакс секция с анимацией */}
-      <motion.section 
+      {/* Параллакс секция */}
+      <section 
         className={styles.parallax}
         style={{ backgroundImage: `url(${garageImage})` }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
       >
         <div className={styles.parallaxOverlay} />
-        <motion.div 
-          className={styles.parallaxContent}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
+        <div className={styles.parallaxContent}>
           <h1 className={styles.mainTitle}>
             Добро пожаловать в <span>Аудио Гараж</span>
           </h1>
           <p className={styles.mainSubtitle}>
             Звуковое сценическое оборудование с душой
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link to="/catalog" className={styles.ctaButton}>
-              Перейти в каталог
-            </Link>
-          </motion.div>
-        </motion.div>
-      </motion.section>
+          <Link to="/catalog" className="btn btn-primary" style={{ padding: '15px 40px', fontSize: '18px' }}>
+            Перейти в каталог
+          </Link>
+        </div>
+      </section>
 
-      {/* Секция с товарами */}
+      {/* Секция с новинками */}
       <section className={styles.section}>
-        <div className={styles.container}>
-          <motion.h2 
-            className={styles.sectionTitle}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+        <div className="container">
+          <h2 className="section-title">
             <span>Новинки</span> в гараже
-          </motion.h2>
+          </h2>
           
-          <motion.div 
-            className={styles.productsGrid}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {products.map((product, index) => {
-              const ProductCard = (
-                <motion.div 
-                  key={product.id} 
-                  className={styles.productCard}
-                  style={{ opacity: 1, visibility: 'visible' }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 0 30px rgba(0, 255, 136, 0.3)"
-                  }}
-                >
+          {loading ? (
+            <div className={styles.loading}>Загрузка...</div>
+          ) : (
+            <div className={styles.productsGrid}>
+              {products.map(product => (
+                <div key={product.id} className={`card ${styles.productCard}`}>
                   <Link to={`/product/${product.id}`} className={styles.productLink}>
                     <div className={styles.productImage}>
                       {product.images && product.images.length > 0 ? (
-                        <motion.img 
+                        <img 
                           src={`http://localhost:5000${
-                            product.images.find(img => img.is_main)?.url || 
-                            product.images[0]?.url
+                            product.images.find(img => img.is_main)?.url || product.images[0]?.url
                           }`}
                           alt={product.name}
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.3 }}
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.style.display = 'none';
-                            e.target.parentElement.innerHTML = '<div class="' + styles.noImage + '">📷</div>';
-                          }}
                         />
                       ) : (
                         <div className={styles.noImage}>📷</div>
@@ -170,59 +75,13 @@ const HomePage = () => {
                     <p className={styles.productPrice}>
                       {Number(product.price).toLocaleString('ru-RU')} ₽
                     </p>
-                    <motion.span 
-                      className={styles.productLink}
-                      whileHover={{ x: 5 }}
-                    >
+                    <span className={styles.readMore}>
                       Подробнее →
-                    </motion.span>
+                    </span>
                   </Link>
-                </motion.div>
-              );
-
-              if (products.length === index + 1) {
-                return (
-                  <div key={product.id} ref={lastProductRef}>
-                    {ProductCard}
-                  </div>
-                );
-              }
-              return ProductCard;
-            })}
-          </motion.div>
-          
-          {loading && (
-            <motion.div 
-              className={styles.loadingMore}
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 1 },  // ← НЕ 0, а 1!
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-            >
-              Загрузка ещё товаров...
-            </motion.div>
-          )}
-          
-          {!hasMore && products.length > 0 && (
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { type: "spring", stiffness: 100 }
-                }
-              }}
-            >
-              Больше товаров нет
-            </motion.div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </section>

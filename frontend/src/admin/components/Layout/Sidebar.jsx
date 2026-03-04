@@ -10,6 +10,7 @@ const Sidebar = () => {
     { path: '/admin/categories', label: 'Категории', icon: '📁' },
     { path: '/admin/products', label: 'Товары', icon: '🎧' },
     { path: '/admin/orders', label: 'Заказы', icon: '📦' },
+    { path: '/admin/articles', label: 'Статьи', icon: '📰' },
   ];
 
   return (

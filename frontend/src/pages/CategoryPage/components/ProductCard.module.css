@@ -1,10 +1,5 @@
 .productCard {
-  background: #3f3d35;
-  border: 2px solid #7a914b;
-  overflow: hidden;
-  transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
+  composes: card from global;
 }
 
 .productLink {
@@ -126,17 +121,11 @@
 }
 
 .addToCartBtn {
+  composes: btn btn-primary from global;
   width: 100%;
-  padding: 12px;
-  background: #7a914b;
+  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
   border: none;
-  border-top: 2px solid #00ff88;
-  color: #2b2a24;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 14px;
+  border-top: 2px solid var(--color-neon);
 }
 
 .addToCartBtn:hover:not(:disabled) {

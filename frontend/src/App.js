@@ -10,6 +10,10 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CartPage from './pages/CartPage/CartPage';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
+import ArticlesPage from './pages/ArticlesPage/ArticlesPage';
+import ArticlePage from './pages/ArticlePage/ArticlePage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
+import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage';
 
 // Админка
 import LoginPage from './admin/pages/LoginPage/LoginPage';
@@ -62,6 +66,34 @@ function App() {
             <>
               <Header />
               <CartPage />
+            </>
+          } />
+
+          <Route path="/articles" element={
+            <>
+              <Header />
+              <ArticlesPage />
+            </>
+          } />
+
+          <Route path="/articles/:slug" element={
+            <>
+              <Header />
+              <ArticlePage />
+            </>
+          } />
+
+          <Route path="/checkout" element={
+            <>
+              <Header />
+              <CheckoutPage />
+            </>
+          } />
+
+          <Route path="/order-success/:orderNumber" element={
+            <>
+              <Header />
+              <OrderSuccessPage />
             </>
           } />
           

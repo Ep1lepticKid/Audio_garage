@@ -1,0 +1,153 @@
+.container {
+  padding: 30px;
+  background: #2b2a24;
+  min-height: 100vh;
+  color: #d4c9a6;
+  font-family: 'Courier New', monospace;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #00ff88;
+}
+
+.title {
+  font-size: 28px;
+  color: #d4c9a6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title span {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.addButton {
+  background: #7a914b;
+  border: 2px solid #00ff88;
+  color: #2b2a24;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.addButton:hover {
+  background: #00ff88;
+  border-color: #7a914b;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.tableContainer {
+  background: #3f3d35;
+  border: 2px solid #7a914b;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.table th {
+  background: #2b2a24;
+  color: #00ff88;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #7a914b;
+}
+
+.table td {
+  padding: 15px;
+  color: #b8ae8e;
+  border-bottom: 1px solid #7a914b;
+}
+
+.table tr:hover td {
+  background: #2b2a24;
+  color: #d4c9a6;
+}
+
+.published {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.draft {
+  color: #ffa500;
+  background: rgba(255, 165, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton, .deleteButton {
+  padding: 6px 12px;
+  border: 1px solid;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: transparent;
+}
+
+.editButton {
+  border-color: #7a914b;
+  color: #b8ae8e;
+}
+
+.editButton:hover {
+  background: #7a914b;
+  color: #2b2a24;
+}
+
+.deleteButton {
+  border-color: #ff4444;
+  color: #ff8888;
+}
+
+.deleteButton:hover {
+  background: #ff4444;
+  color: #2b2a24;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-size: 18px;
+}
+
+.error {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  color: #ff8888;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 40px;
+  color: #b8ae8e;
+  font-style: italic;
+}

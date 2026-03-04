@@ -8,6 +8,8 @@ const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const authRoutes = require('./routes/authRoutes');
 const imageRoutes = require('./routes/imageRoutes');
+const articleRoutes = require('./routes/articleRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 
@@ -33,6 +35,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/images', imageRoutes);
+app.use('/api/articles', articleRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Обработка 404
 app.use((req, res) => {
