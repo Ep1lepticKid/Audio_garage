@@ -197,7 +197,7 @@ const ImageUploader = ({ productId, onImagesChange }) => {
             return (
               <div key={image.id} className={styles.imageCard}>
                 <img 
-                  src={`http://localhost:5000${imageUrl}`}
+                  src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${imageUrl}`}
                   alt="Товар"
                   className={styles.image}
                   onError={(e) => {

@@ -14,11 +14,9 @@
   transform-origin: top center;
 }
 
-
 :global(body) {
   padding-top: calc(80px * 1.15);
 }
-
 
 @media (max-width: 768px) {
   .header {
@@ -58,6 +56,13 @@
   gap: 2px;
 }
 
+.logoAudio {
+  display: flex;
+  align-items: center;
+  color: #d4c9a6;
+}
+
+/* Буква Г - неоновая и мерцает */
 .logoCharG {
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
@@ -65,19 +70,7 @@
   display: inline-block;
 }
 
-
-.logoAudio {
-  display: flex;
-  align-items: center;
-  color: #d4c9a6;
-}
-
-
-.logoCharFirstG {
-  color: #d4c9a6;
-  display: inline-block;
-}
-
+/* Буква А - перевёрнутая и висящая */
 .logoCharHangingA {
   display: inline-block;
   font-size: 32px;
@@ -102,8 +95,9 @@
   }
 }
 
+/* Гвоздик для буквы А */
 .logoCharHangingA::before {
-  content: '';
+  content: '⚫';
   position: absolute;
   top: 5px;
   left: 0px;  
@@ -126,14 +120,17 @@
   }
 }
 
+/* Буквы РЖ - неоновые и мерцают */
 .logoNeonRJ {
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
   animation: chaoticFlicker 5s infinite;
   display: inline-block;
+  position: relative;
 }
 
-@@keyframes chaoticFlicker {
+/* ИСПРАВЛЕНО: убран лишний @ */
+@keyframes chaoticFlicker {
   0%, 100% {
     opacity: 1;
     text-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
@@ -200,6 +197,7 @@
   }
 }
 
+/* Эффект мерцающей трубки для неона */
 .logoNeonRJ::after {
   content: '';
   position: absolute;
@@ -300,6 +298,7 @@
   color: #00ff88;
 }
 
+/* Действия (корзина и вход) */
 .actions {
   display: flex;
   align-items: center;
@@ -367,6 +366,7 @@
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
 
+/* Адаптация для мобильных */
 @media (max-width: 768px) {
   .container {
     flex-wrap: wrap;

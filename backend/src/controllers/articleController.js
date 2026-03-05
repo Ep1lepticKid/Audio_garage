@@ -1,14 +1,21 @@
 const db = require('../config/database');
 
+console.log('✅ articleController.js загружен');
+console.log('Проверка подключения к БД...');
+
 // Получить все опубликованные статьи (для публичной части)
 const getPublishedArticles = async (req, res) => {
   try {
+    console.log('📥 Запрос статей с параметрами:', req.query);
+    
     const { page = 1, limit = 10 } = req.query;
     const offset = (page - 1) * limit;
     
+    console.log(`📊 Пагинация: page=${page}, limit=${limit}, offset=${offset}`);
+    
     const result = await db.query(
       `SELECT id, title, slug, excerpt, image_url, author, views_count, 
-              to_char(published_at, 'DD.MM.YYYY') as published_at
+              TO_CHAR(published_at, 'DD.MM.YYYY') as published_at
        FROM articles 
        WHERE is_published = true 
        ORDER BY published_at DESC
@@ -16,22 +23,35 @@ const getPublishedArticles = async (req, res) => {
       [limit, offset]
     );
     
+    console.log(`✅ Найдено статей: ${result.rows.length}`);
+    
     const countResult = await db.query(
       'SELECT COUNT(*) FROM articles WHERE is_published = true'
     );
+    
+    const total = parseInt(countResult.rows[0].count);
+    console.log(`📊 Всего статей: ${total}`);
     
     res.json({
       articles: result.rows,
       pagination: {
         page: parseInt(page),
         limit: parseInt(limit),
-        total: parseInt(countResult.rows[0].count),
-        pages: Math.ceil(countResult.rows[0].count / limit)
+        total,
+        pages: Math.ceil(total / limit)
       }
     });
   } catch (error) {
-    console.error('Ошибка при получении статей:', error);
-    res.status(500).json({ message: 'Ошибка сервера' });
+    console.error('❌ ОШИБКА в getPublishedArticles:', error);
+    console.error('📝 Детали ошибки:', {
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    });
+    res.status(500).json({ 
+      message: 'Ошибка сервера',
+      error: error.message 
+    });
   }
 };
 

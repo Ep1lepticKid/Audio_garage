@@ -291,7 +291,7 @@ const CheckoutPage = () => {
                 <div key={item.id} className={styles.cartItem}>
                   <div className={styles.itemImage}>
                     {item.image ? (
-                      <img src={`http://localhost:5000${item.image}`} alt={item.name} />
+                      <img src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${item.image}`} alt={item.name} />
                     ) : (
                       <div className={styles.noImage}>📷</div>
                     )}

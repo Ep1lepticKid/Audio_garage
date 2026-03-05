@@ -76,7 +76,7 @@ const ArticlePage = () => {
           {article.image_url && (
             <div className={styles.articleImage}>
               <img 
-                src={`http://localhost:5000${article.image_url}`}
+                src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${article.image_url}`}
                 alt={article.title}
               />
             </div>

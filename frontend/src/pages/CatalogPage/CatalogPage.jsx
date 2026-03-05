@@ -170,7 +170,7 @@ const CatalogPage = () => {
                     <div className={styles.categoryImageWrapper}>
                       {hasImage ? (
                         <img 
-                          src={`http://localhost:5000${hasImage}`}
+                          src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${hasImage}`}
                           alt={category.name}
                           className={styles.categoryImage}
                           onError={(e) => {

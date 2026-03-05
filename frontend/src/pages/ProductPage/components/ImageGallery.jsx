@@ -24,7 +24,7 @@ const ImageGallery = ({ images, productName }) => {
         <AnimatePresence mode="wait">
           <motion.img
             key={selectedImage}
-            src={`${process.env.REACT_APP_IMAGE_URL}${images[selectedImage].url}`}
+            src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${images[selectedImage].url}`}
             alt={productName}
             className={styles.mainImg}
             initial={{ opacity: 0 }}

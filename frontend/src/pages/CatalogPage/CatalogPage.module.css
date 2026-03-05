@@ -1,21 +1,23 @@
-/* Основные стили */
 .catalogPage {
   background: #2b2a24;
   min-height: 100vh;
+  padding-top: 80px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 40px 20px;
 }
 
 /* Hero секция */
 .hero {
-  padding: 140px 0 80px;
+  padding: 60px 0 40px;
   background: linear-gradient(135deg, #1a1a15 0%, #2b2a24 100%);
   position: relative;
   overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 40px;
 }
 
 .hero::before {
@@ -40,6 +42,7 @@
   position: relative;
   z-index: 2;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .heroTitle span {
@@ -51,42 +54,54 @@
   font-size: 20px;
   color: #b8ae8e;
   max-width: 600px;
+  margin: 0 auto;
   line-height: 1.6;
   position: relative;
   z-index: 2;
+  text-align: center;
 }
 
 /* Секция категорий */
 .categoriesSection {
-  padding: 80px 0;
+  padding: 40px 0 60px;
 }
 
 .categoriesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-/* Карточка категории */
+/* Карточка категории - ИСПРАВЛЕНО */
 .categoryCard {
   background: #3f3d35;
   border: 2px solid #7a914b;
+  border-radius: 16px; /* Закруглённые углы как у карточек товаров */
   transition: all 0.3s;
   overflow: hidden;
   position: relative;
-  height: 100%;
+  height: 280px; /* Фиксированная высота, меньше чем было */
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCard:hover {
+  border-color: #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  transform: translateY(-4px);
 }
 
 .categoryLink {
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
 .categoryImageWrapper {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 160px; /* Фиксированная высота изображения */
   overflow: hidden;
   background: #2b2a24;
 }
@@ -111,7 +126,7 @@
 }
 
 .placeholderText {
-  font-size: 80px;
+  font-size: 48px;
   font-weight: bold;
   color: #d4c9a6;
   text-transform: uppercase;
@@ -135,27 +150,29 @@
 
 .productCount {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   background: #00ff88;
   color: #2b2a24;
-  padding: 5px 15px;
-  font-size: 14px;
+  padding: 4px 12px;
+  font-size: 13px;
   font-weight: 600;
-  border-radius: 0;
+  border-radius: 20px; /* Закруглённый счётчик */
   z-index: 2;
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
 
 .categoryInfo {
-  padding: 25px;
-  position: relative;
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .categoryName {
-  font-size: 24px;
+  font-size: 20px;
   color: #d4c9a6;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: 'Courier Prime', monospace;
@@ -168,18 +185,21 @@
 
 .categoryDescription {
   color: #b8ae8e;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .categoryArrow {
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  font-size: 24px;
+  font-size: 18px;
   color: #7a914b;
   transition: all 0.3s;
+  align-self: flex-end;
 }
 
 .categoryCard:hover .categoryArrow {
@@ -189,22 +209,25 @@
 
 /* Призыв к действию */
 .ctaSection {
-  padding: 80px 0;
+  padding: 60px 0;
   background: #1a1a15;
   border-top: 2px solid #7a914b;
   border-bottom: 2px solid #7a914b;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
 .ctaContent {
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .ctaTitle {
-  font-size: 36px;
+  font-size: 32px;
   color: #d4c9a6;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-family: 'Courier Prime', monospace;
   text-transform: uppercase;
 }
@@ -212,15 +235,16 @@
 .ctaText {
   color: #b8ae8e;
   font-size: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   line-height: 1.6;
 }
 
 .ctaButton {
   display: inline-block;
-  padding: 15px 40px;
+  padding: 12px 30px;
   background: #7a914b;
   border: 2px solid #00ff88;
+  border-radius: 30px; /* Закруглённая кнопка */
   color: #2b2a24;
   text-decoration: none;
   font-weight: 600;
@@ -266,7 +290,7 @@
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 0 60px;
+    padding: 40px 0 30px;
   }
   
   .heroTitle {
@@ -275,18 +299,24 @@
   
   .heroSubtitle {
     font-size: 16px;
+    padding: 0 20px;
   }
   
   .categoriesGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .categoryCard {
+    height: 260px;
   }
   
   .categoryImageWrapper {
-    height: 200px;
+    height: 140px;
   }
   
   .ctaTitle {
-    font-size: 28px;
+    font-size: 24px;
   }
   
   .ctaText {

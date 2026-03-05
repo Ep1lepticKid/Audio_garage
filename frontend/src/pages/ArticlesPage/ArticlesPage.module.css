@@ -104,7 +104,7 @@
   line-height: 1.6;
   margin-bottom: 15px;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Ограничиваем до 3 строк */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -224,4 +224,13 @@
   color: #b8ae8e;
   font-size: 18px;
   padding: 60px 0;
+}
+
+.articleCard {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.articleImage {
+  border-radius: 12px 12px 0 0;
 }
