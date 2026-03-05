@@ -97,7 +97,7 @@
 
 /* Гвоздик для буквы А */
 .logoCharHangingA::before {
-  content: '⚫';
+  content: '';
   position: absolute;
   top: 5px;
   left: 0px;  
@@ -120,7 +120,6 @@
   }
 }
 
-/* Буквы РЖ - неоновые и мерцают */
 .logoNeonRJ {
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
@@ -197,7 +196,6 @@
   }
 }
 
-/* Эффект мерцающей трубки для неона */
 .logoNeonRJ::after {
   content: '';
   position: absolute;
