@@ -74,3 +74,11 @@
     grid-template-columns: 1fr;
   }
 }
+.content {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mapContainer iframe {
+  border-radius: 12px;
+}

@@ -121,3 +121,12 @@
     gap: 30px;
   }
 }
+
+.gallerySection, .infoSection, .detailsSection {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.addToCartBtn {
+  border-radius: 30px;
+}

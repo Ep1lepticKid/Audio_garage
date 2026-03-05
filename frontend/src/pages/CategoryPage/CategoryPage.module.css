@@ -320,3 +320,17 @@
     gap: 20px;
   }
 }
+
+.categoryCard {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.productCard {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.addToCartBtn {
+  border-radius: 0 0 12px 12px;
+}

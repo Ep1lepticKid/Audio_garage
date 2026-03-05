@@ -20,7 +20,7 @@ const ArticlesPage = () => {
   const loadArticles = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/articles/published?page=...`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/articles/published?page=${pagination.page}&limit=${pagination.limit}`);
       const data = await response.json();
       
       setArticles(data.articles || []);
@@ -75,7 +75,7 @@ const ArticlesPage = () => {
                     {article.image_url && (
                       <div className={styles.articleImage}>
                         <img 
-                          src={`http://localhost:5000${article.image_url}`}
+                          src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${article.image_url}`}
                           alt={article.title}
                           onError={(e) => {
                             e.target.onerror = null;

@@ -329,7 +329,7 @@ const ProductsPage = () => {
                       
                       return (
                         <img 
-                          src={`http://localhost:5000${imageUrl}`} 
+                          src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${imageUrl}`} 
                           alt={product.name}
                           className={styles.productImage}
                           onError={(e) => {

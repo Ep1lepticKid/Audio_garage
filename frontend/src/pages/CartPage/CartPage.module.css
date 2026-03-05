@@ -126,6 +126,7 @@
 .quantityBtn {
   width: 30px;
   height: 30px;
+  border-radius: 8px;
   background: #2b2a24;
   border: 2px solid #7a914b;
   color: #b8ae8e;
@@ -242,6 +243,9 @@
   transition: all 0.3s;
   font-size: 16px;
 }
+.checkoutBtn, .clearCartBtn {
+  border-radius: 30px;
+}
 
 .checkoutBtn:hover {
   background: #00ff88;
@@ -312,5 +316,7 @@
   
   .cartItem {
     position: relative;
+    border-radius: 12px;
+    overflow: hidden;
   }
 }

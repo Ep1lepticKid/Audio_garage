@@ -62,7 +62,7 @@ const HomePage = () => {
                     <div className={styles.productImage}>
                       {product.images && product.images.length > 0 ? (
                         <img 
-                          src={`${process.env.REACT_APP_IMAGE_URL}${
+                          src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:5000'}${
                             product.images.find(img => img.is_main)?.url || product.images[0]?.url
                           }`}
                           alt={product.name}
