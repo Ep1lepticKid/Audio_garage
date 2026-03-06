@@ -1,8 +1,5 @@
 const db = require('../config/database');
 
-console.log('✅ articleController.js загружен');
-console.log('Проверка подключения к БД...');
-
 // Получить все опубликованные статьи (для публичной части)
 const getPublishedArticles = async (req, res) => {
   try {
