@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Добавим Link
+import { useNavigate } from 'react-router-dom';
+import { productsApi } from '../../services/products';
+import { categoriesApi } from '../../services/categories';
+import { ordersApi } from '../../services/orders';
+import { articlesApi } from '../../services/articles';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -7,8 +11,11 @@ const DashboardPage = () => {
   const [stats, setStats] = useState({
     products: 0,
     categories: 0,
-    orders: 0
+    orders: 0,
+    articles: 0,
+    newOrders: 0
   });
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,66 +28,78 @@ const DashboardPage = () => {
     }
     
     setUser(JSON.parse(userData));
-    fetchStats();
+    loadStats();
   }, [navigate]);
 
-  const fetchStats = async () => {
+  const loadStats = async () => {
     try {
-      // Здесь будут реальные запросы
+      setLoading(true);
+      
+      // Загружаем реальные данные из API
+      const [productsData, categoriesData, ordersData, articlesData] = await Promise.all([
+        productsApi.getAll('?limit=1').catch(() => ({ pagination: { total: 0 } })),
+        categoriesApi.getAll().catch(() => []),
+        ordersApi.getAll('?limit=1').catch(() => ({ pagination: { total: 0 } })),
+        articlesApi.getAll().catch(() => [])
+      ]);
+
+      // Подсчитываем новые заказы (со статусом 'new')
+      const newOrdersCount = Array.isArray(ordersData.orders) 
+        ? ordersData.orders.filter(order => order.status_name === 'new').length 
+        : 0;
+
       setStats({
-        products: 15,
-        categories: 7,
-        orders: 3
+        products: productsData.pagination?.total || 0,
+        categories: categoriesData.length || 0,
+        orders: ordersData.pagination?.total || 0,
+        articles: articlesData.length || 0,
+        newOrders: newOrdersCount
       });
     } catch (error) {
       console.error('Ошибка загрузки статистики:', error);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/admin/login');
   };
 
   if (!user) return null;
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>
-          АУДИО<span>ГАРАЖ</span>
-        </h1>
-        <div className={styles.userInfo}>
-          <span>{user.first_name || 'Менеджер'} {user.last_name}</span>
-          <button className={styles.logoutBtn} onClick={handleLogout}>
-            Выйти
-          </button>
+      <h1 className={styles.welcome}>
+        Добро пожаловать, {user.first_name || 'Менеджер'}!
+      </h1>
+      
+      {loading ? (
+        <div className={styles.loading}>Загрузка статистики...</div>
+      ) : (
+        <div className={styles.stats}>
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>{stats.products}</div>
+            <div className={styles.statLabel}>Товаров</div>
+          </div>
+          
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>{stats.categories}</div>
+            <div className={styles.statLabel}>Категорий</div>
+          </div>
+          
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>{stats.orders}</div>
+            <div className={styles.statLabel}>Заказов</div>
+            {stats.newOrders > 0 && (
+              <span className={styles.newOrders}>
+                +{stats.newOrders} новых
+              </span>
+            )}
+          </div>
+          
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>{stats.articles}</div>
+            <div className={styles.statLabel}>Статей</div>
+          </div>
         </div>
-      </div>
-
-      {/* Добавляем навигационное меню */}
-      <div className={styles.navMenu}>
-        <Link to="/admin/dashboard" className={styles.navLink}>Главная</Link>
-        <Link to="/admin/categories" className={styles.navLink}>Категории</Link>
-        <Link to="/admin/products" className={styles.navLink}>Товары</Link>
-        <Link to="/admin/orders" className={styles.navLink}>Заказы</Link>
-      </div>
-
-      <div className={styles.stats}>
-        <div className={styles.statCard}>
-          <div className={styles.statNumber}>{stats.products}</div>
-          <div className={styles.statLabel}>Товаров</div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statNumber}>{stats.categories}</div>
-          <div className={styles.statLabel}>Категорий</div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statNumber}>{stats.orders}</div>
-          <div className={styles.statLabel}>Заказов</div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

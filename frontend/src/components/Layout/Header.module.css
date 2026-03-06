@@ -41,6 +41,31 @@
   align-items: center;
 }
 
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s;
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at center, black 70%, transparent 96%);
+  -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 96%);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  outline: 2px solid rgba(122, 145, 75, 0.2);
+  outline-offset: -1px;
+}
+
+.logoContainer:hover .logoImage {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
 .logo {
   font-family: 'Courier Prime', monospace;
   font-size: 28px;
@@ -62,7 +87,6 @@
   color: #d4c9a6;
 }
 
-/* Буква Г - неоновая и мерцает */
 .logoCharG {
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
@@ -70,7 +94,6 @@
   display: inline-block;
 }
 
-/* Буква А - перевёрнутая и висящая */
 .logoCharHangingA {
   display: inline-block;
   font-size: 32px;
@@ -95,7 +118,7 @@
   }
 }
 
-/* Гвоздик для буквы А */
+
 .logoCharHangingA::before {
   content: '';
   position: absolute;
@@ -128,7 +151,6 @@
   position: relative;
 }
 
-/* ИСПРАВЛЕНО: убран лишний @ */
 @keyframes chaoticFlicker {
   0%, 100% {
     opacity: 1;
@@ -370,6 +392,10 @@
     flex-wrap: wrap;
     gap: 15px;
   }
+
+  .logoImage {
+    height: 30px;
+  }
   
   .nav {
     order: 3;
@@ -379,11 +405,11 @@
   }
   
   .logo {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   .logoCharHangingA {
-    font-size: 28px;
+    font-size: 24px;
   }
   
   .actions {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './Header.module.css';
+import logoImage from '../../assets/images/logo.png'; // Импортируй свой логотип
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,11 +20,14 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo}>
-          <span className={styles.logoAudio}>АУДИО</span>
-          <span className={styles.logoCharG}>Г</span>
-          <span className={styles.logoCharHangingA}>А</span>
-          <span className={styles.logoNeonRJ}>РАЖ</span>
+        <Link to="/" className={styles.logoContainer}>
+          <img src={logoImage} alt="Аудио Гараж" className={styles.logoImage} />
+          <span className={styles.logo}>
+            <span className={styles.logoAudio}>АУДИО</span>
+            <span className={styles.logoCharG}>Г</span>
+            <span className={styles.logoCharHangingA}>А</span>
+            <span className={styles.logoNeonRJ}>РАЖ</span>
+          </span>
         </Link>
 
         <nav className={styles.nav}>
@@ -33,12 +37,7 @@ const Header = () => {
           >
             Каталог
           </Link>
-          <Link 
-            to="/contacts" 
-            className={`${styles.navLink} ${location.pathname === '/contacts' ? styles.active : ''}`}
-          >
-            Контакты
-          </Link>
+          <Link to="/contacts" className={styles.navLink}>Контакты</Link>
           <Link to="/articles" className={styles.navLink}>Статьи</Link>
           <Link to="/feedback" className={styles.navLink}>Обратная связь</Link>
         </nav>
