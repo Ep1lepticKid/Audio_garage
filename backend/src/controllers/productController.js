@@ -9,11 +9,13 @@ const getProducts = async (req, res) => {
       category_id, 
       min_price, 
       max_price,
-      search 
+      search,
+      in_stock 
     } = req.query;
     
     const offset = (page - 1) * limit;
     
+    // Основной запрос для получения товаров
     let query = `
       SELECT 
         p.*,
@@ -29,42 +31,59 @@ const getProducts = async (req, res) => {
       WHERE p.is_active = true
     `;
     
+    // Запрос для подсчета общего количества (с теми же условиями)
+    let countQuery = 'SELECT COUNT(*) FROM products WHERE is_active = true';
+    
     const queryParams = [];
+    const countParams = [];
     let paramIndex = 1;
     
-    // Добавляем фильтры
+    // Добавляем фильтры в оба запроса
     if (category_id) {
       query += ` AND p.category_id = $${paramIndex}`;
+      countQuery += ` AND category_id = $${paramIndex}`;
       queryParams.push(category_id);
+      countParams.push(category_id);
       paramIndex++;
     }
     
     if (min_price) {
       query += ` AND p.price >= $${paramIndex}`;
+      countQuery += ` AND price >= $${paramIndex}`;
       queryParams.push(min_price);
+      countParams.push(min_price);
       paramIndex++;
     }
     
     if (max_price) {
       query += ` AND p.price <= $${paramIndex}`;
+      countQuery += ` AND price <= $${paramIndex}`;
       queryParams.push(max_price);
+      countParams.push(max_price);
       paramIndex++;
     }
     
     if (search) {
       query += ` AND p.name ILIKE $${paramIndex}`;
+      countQuery += ` AND name ILIKE $${paramIndex}`;
       queryParams.push(`%${search}%`);
+      countParams.push(`%${search}%`);
       paramIndex++;
     }
     
-    // Добавляем сортировку и пагинацию
+    if (in_stock === 'true') {
+      query += ` AND p.quantity > 0`;
+      countQuery += ` AND quantity > 0`;
+    }
+    
+    // Добавляем сортировку и пагинацию только в основной запрос
     query += ` ORDER BY p.created_at DESC LIMIT $${paramIndex} OFFSET $${paramIndex + 1}`;
     queryParams.push(limit, offset);
     
     const result = await db.query(query, queryParams);
     
-    // Получаем общее количество для пагинации
-    const countResult = await db.query('SELECT COUNT(*) FROM products WHERE is_active = true');
+    // Получаем общее количество с учетом всех фильтров
+    const countResult = await db.query(countQuery, countParams);
     const total = parseInt(countResult.rows[0].count);
     
     res.json({
