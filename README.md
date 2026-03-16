@@ -132,15 +132,25 @@ bcryptjs для хэширования паролей
 
 📦 Основные функции API
 Метод	Endpoint	Описание
+
 GET	/api/products	Список товаров с пагинацией и фильтрами
+
 GET	/api/products/:id	Детальная информация о товаре
+
 POST	/api/products	Создание товара (admin)
+
 PUT	/api/products/:id	Обновление товара (admin)
+
 DELETE	/api/products/:id	Удаление товара (admin)
+
 GET	/api/categories	Список категорий
+
 GET	/api/orders	Список заказов (admin)
+
 POST	/api/orders	Создание заказа
+
 POST	/api/auth/login	Вход в систему
+
 ✅ Тестирование
 Проект протестирован:
 
